@@ -1,0 +1,21 @@
+{
+  "name": "react-native-zendesk-support",
+  "version": "0.1.0",
+  "description": "React Native Wrapper around Zendesk Support SDK",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/robertsheao/react-native-zendesk-support"
+  },
+  "keywords": [
+    "zendesk",
+    "support",
+    "react-native",
+    "react",
+    "ios",
+    "android",
+    "react-component"
+  ],
+  "author": "robertsheao",
+  "license": "MIT"
+}
