@@ -1,5 +1,5 @@
 # react-native-zendesk-support
-React Native bridge to ZenDesk Support SDK on iOS and Android. This currently only supports using the out of the box views the ZenDesk Support SDK provides. Only Anonymous
+React Native bridge to ZenDesk Support SDK on iOS and Android. This currently only supports using the out of the box views the ZenDesk Support SDK provides. At the moment, only anonymous authentication is supported.
 
 ## React Native Version Support
 
