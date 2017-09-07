@@ -5,7 +5,7 @@
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/robertsheao/react-native-zendesk-chat"
+    "url": "https://github.com/robertsheao/react-native-zendesk-support"
   },
   "keywords": [
     "zendesk",
