@@ -9,6 +9,7 @@ import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
+import com.facebook.react.bridge.ReadableArray;
 import com.facebook.react.bridge.ReadableMap;
 import com.zendesk.sdk.feedback.ui.ContactZendeskActivity;
 import com.zendesk.sdk.requests.RequestActivity;
@@ -31,6 +32,142 @@ public class RNZenDeskSupportModule extends ReactContextBaseJavaModule {
   @Override
   public String getName() {
     return "RNZenDeskSupport";
+  }
+
+  private static long[] toLongArray(ArrayList<?> values) {
+    long[] arr = new long[values.size()];
+    for (int i = 0; i < values.size(); i++)
+      arr[i] = Long.parseLong((String) values.get(i));
+    return arr;
+  }
+
+  @ReactMethod
+  public void showHelpCenterWithOptions(ReadableMap options) {
+    Boolean showConversationsMenuButton = true;
+    ContactUsButtonVisibility withContactUsButtonVisibility = ContactUsButtonVisibility.ARTICLE_LIST_AND_ARTICLE;
+    if (!(options == null || options.toHashMap().isEmpty())) {
+      showConversationsMenuButton = options.getBoolean("showConversationsMenuButton");
+      if (!options.getString("withContactUsButtonVisibility").isEmpty()) {
+        switch(options.getString("withContactUsButtonVisibility")) {
+          case "OFF":
+            withContactUsButtonVisibility = ContactUsButtonVisibility.OFF;
+            break;
+          case "ARTICLE_LIST_ONLY":
+            withContactUsButtonVisibility = ContactUsButtonVisibility.ARTICLE_LIST_ONLY;
+            break;
+          case "ARTICLE_LIST_AND_ARTICLE":
+          default:
+            withContactUsButtonVisibility = ContactUsButtonVisibility.ARTICLE_LIST_AND_ARTICLE;
+        }
+      }
+    }
+    new SupportActivity
+      .Builder()
+      .withContactUsButtonVisibility(withContactUsButtonVisibility)
+      .showConversationsMenuButton(showConversationsMenuButton)
+      .show(getReactApplicationContext());
+  }
+
+  @ReactMethod
+  public void showCategoriesWithOptions(ReadableArray categoryIds, ReadableMap options) {
+    Boolean showConversationsMenuButton = true;
+    ContactUsButtonVisibility withContactUsButtonVisibility = ContactUsButtonVisibility.ARTICLE_LIST_AND_ARTICLE;
+    if (!(options == null || options.toHashMap().isEmpty())) {
+      showConversationsMenuButton = options.getBoolean("showConversationsMenuButton");
+      if (!options.getString("withContactUsButtonVisibility").isEmpty()) {
+        switch(options.getString("withContactUsButtonVisibility")) {
+          case "OFF":
+            withContactUsButtonVisibility = ContactUsButtonVisibility.OFF;
+            break;
+          case "ARTICLE_LIST_ONLY":
+            withContactUsButtonVisibility = ContactUsButtonVisibility.ARTICLE_LIST_ONLY;
+            break;
+          case "ARTICLE_LIST_AND_ARTICLE":
+          default:
+            withContactUsButtonVisibility = ContactUsButtonVisibility.ARTICLE_LIST_AND_ARTICLE;
+        }
+      }
+    }
+    new SupportActivity
+      .Builder()
+      .withContactUsButtonVisibility(withContactUsButtonVisibility)
+      .showConversationsMenuButton(showConversationsMenuButton)
+      .withArticlesForCategoryIds(toLongArray(categoryIds.toArrayList()))
+      .show(getReactApplicationContext());
+  }
+
+  @ReactMethod
+  public void showSectionsWithOptions(ReadableArray sectionIds, ReadableMap options) {
+    Boolean showConversationsMenuButton = true;
+    ContactUsButtonVisibility withContactUsButtonVisibility = ContactUsButtonVisibility.ARTICLE_LIST_AND_ARTICLE;
+    if (!(options == null || options.toHashMap().isEmpty())) {
+      showConversationsMenuButton = options.getBoolean("showConversationsMenuButton");
+      if (!options.getString("withContactUsButtonVisibility").isEmpty()) {
+        switch(options.getString("withContactUsButtonVisibility")) {
+          case "OFF":
+            withContactUsButtonVisibility = ContactUsButtonVisibility.OFF;
+            break;
+          case "ARTICLE_LIST_ONLY":
+            withContactUsButtonVisibility = ContactUsButtonVisibility.ARTICLE_LIST_ONLY;
+            break;
+          case "ARTICLE_LIST_AND_ARTICLE":
+          default:
+            withContactUsButtonVisibility = ContactUsButtonVisibility.ARTICLE_LIST_AND_ARTICLE;
+        }
+      }
+    }
+    new SupportActivity
+      .Builder()
+      .show(getReactApplicationContext());
+  }
+
+  @ReactMethod
+  public void showLabelsWithOptions(ReadableArray labels, ReadableMap options) {
+    Boolean showConversationsMenuButton = true;
+    ContactUsButtonVisibility withContactUsButtonVisibility = ContactUsButtonVisibility.ARTICLE_LIST_AND_ARTICLE;
+    if (!(options == null || options.toHashMap().isEmpty())) {
+      showConversationsMenuButton = options.getBoolean("showConversationsMenuButton");
+      if (!options.getString("withContactUsButtonVisibility").isEmpty()) {
+        switch(options.getString("withContactUsButtonVisibility")) {
+          case "OFF":
+            withContactUsButtonVisibility = ContactUsButtonVisibility.OFF;
+            break;
+          case "ARTICLE_LIST_ONLY":
+            withContactUsButtonVisibility = ContactUsButtonVisibility.ARTICLE_LIST_ONLY;
+            break;
+          case "ARTICLE_LIST_AND_ARTICLE":
+          default:
+            withContactUsButtonVisibility = ContactUsButtonVisibility.ARTICLE_LIST_AND_ARTICLE;
+        }
+      }
+    }
+    //noinspection SuspiciousToArrayCall
+    new SupportActivity
+      .Builder()
+      .withContactUsButtonVisibility(withContactUsButtonVisibility)
+      .showConversationsMenuButton(showConversationsMenuButton)
+      .withLabelNames(labels.toArrayList().toArray(new String[]{}))
+      .show(getReactApplicationContext());
+  }
+
+  @ReactMethod
+  public void showHelpCenter() {
+    showHelpCenterWithOptions(null);
+  }
+
+  @ReactMethod
+  public void showCategories(ReadableArray categoryIds) {
+    showCategoriesWithOptions(categoryIds, null);
+  }
+
+  @ReactMethod
+  public void showSections(ReadableArray sectionIds) {
+    showSectionsWithOptions(sectionIds, null);
+  }
+
+  @ReactMethod
+  public void showLabels(ReadableArray labels) {
+    showLabelsWithOptions(labels, null);
   }
 
   @ReactMethod
