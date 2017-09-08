@@ -71,24 +71,36 @@ ZenDeskSupport.showLabels(['tacocat'])
 The Help Center functions above support a second parameter, an object of options.
 ```js
 const options = {
-hideContactSupport: true,
-withContactUsButtonVisibility: "OFF"
+  articleVotingEnabled: false,
+  hideContactSupport: false,
+  showConversationsMenuButton: false,
+  withContactUsButtonVisibility: 'OFF'
 }
-
 ZenDeskSupport.showHelpCenterWithOptions({ options })
 ZenDeskSupport.showCategoriesWithOptions(['categoryId'], { options })
 ZenDeskSupport.showSectionsWithOptions(['sectionId'], { options })
 ZenDeskSupport.showLabelsWithOptions(['tacocat'], { options })
 ```
 
-```
-hideContactSupport: true || false // iOS only (appears on empty search results)
-showConversationsMenuButton: true || false // android only (top right menu button)
-withContactUsButtonVisibility: "OFF" || "ARTICLE_LIST_ONLY" || "ARTICLE_LIST_AND_ARTICLE" // android only (floating action button)
-```
+##### articleVotingEnabled _boolean_
+* **true** _(default)_ – Show voting buttons on articles
+* **false** – Hide voting buttons on articles.
+
+##### hideContactSupport _boolean_
+* **true** _(default)_ – Shows contact support option in empty results on iOS
+* **false** – Hides contact support option in empty results on iOS
+
+##### showConversationsMenuButton _boolean_
+* **true** _(default)_ – Shows the right menu on Android which shows tickets
+* **false** – Hides the right menu on Android which shows tickets
+
+##### withContactUsButtonVisibility _string (case sensitive)_
+* **ARTICLE_LIST_AND_ARTICLE** _(default)_ – Show floating action button in list and article view
+* **ARTICLE_LIST_ONLY** – Show floating action button only in list views
+* **OFF** – Hide floating action button on articles and list views
 
 ## Known bugs
-* Disappearing section headers on android
+* Disappearing help center category headers on android
 
 ## Upcoming Features
 
