@@ -47,9 +47,13 @@ public class RNZenDeskSupportModule extends ReactContextBaseJavaModule {
     Boolean articleVotingEnabled = true;
     ContactUsButtonVisibility withContactUsButtonVisibility = ContactUsButtonVisibility.ARTICLE_LIST_AND_ARTICLE;
     if (!(options == null || options.toHashMap().isEmpty())) {
-      showConversationsMenuButton = options.getBoolean("showConversationsMenuButton");
-      articleVotingEnabled = options.getBoolean("articleVotingEnabled");
-      if (!options.getString("withContactUsButtonVisibility").isEmpty()) {
+      if (options.hasKey("showConversationsMenuButton")) {
+        showConversationsMenuButton = options.getBoolean("showConversationsMenuButton");
+      }
+      if (options.hasKey("articleVotingEnabled")) {
+        articleVotingEnabled = options.getBoolean("articleVotingEnabled");
+      }
+      if (options.hasKey("withContactUsButtonVisibility")) {
         switch(options.getString("withContactUsButtonVisibility")) {
           case "OFF":
             withContactUsButtonVisibility = ContactUsButtonVisibility.OFF;
@@ -77,9 +81,13 @@ public class RNZenDeskSupportModule extends ReactContextBaseJavaModule {
     Boolean articleVotingEnabled = true;
     ContactUsButtonVisibility withContactUsButtonVisibility = ContactUsButtonVisibility.ARTICLE_LIST_AND_ARTICLE;
     if (!(options == null || options.toHashMap().isEmpty())) {
-      showConversationsMenuButton = options.getBoolean("showConversationsMenuButton");
-      articleVotingEnabled = options.getBoolean("articleVotingEnabled");
-      if (!options.getString("withContactUsButtonVisibility").isEmpty()) {
+      if (options.hasKey("showConversationsMenuButton")) {
+        showConversationsMenuButton = options.getBoolean("showConversationsMenuButton");
+      }
+      if (options.hasKey("articleVotingEnabled")) {
+        articleVotingEnabled = options.getBoolean("articleVotingEnabled");
+      }
+      if (options.hasKey("withContactUsButtonVisibility")) {
         switch(options.getString("withContactUsButtonVisibility")) {
           case "OFF":
             withContactUsButtonVisibility = ContactUsButtonVisibility.OFF;
@@ -108,9 +116,13 @@ public class RNZenDeskSupportModule extends ReactContextBaseJavaModule {
     Boolean articleVotingEnabled = true;
     ContactUsButtonVisibility withContactUsButtonVisibility = ContactUsButtonVisibility.ARTICLE_LIST_AND_ARTICLE;
     if (!(options == null || options.toHashMap().isEmpty())) {
-      showConversationsMenuButton = options.getBoolean("showConversationsMenuButton");
-      articleVotingEnabled = options.getBoolean("articleVotingEnabled");
-      if (!options.getString("withContactUsButtonVisibility").isEmpty()) {
+      if (options.hasKey("showConversationsMenuButton")) {
+        showConversationsMenuButton = options.getBoolean("showConversationsMenuButton");
+      }
+      if (options.hasKey("articleVotingEnabled")) {
+        articleVotingEnabled = options.getBoolean("articleVotingEnabled");
+      }
+      if (options.hasKey("withContactUsButtonVisibility")) {
         switch(options.getString("withContactUsButtonVisibility")) {
           case "OFF":
             withContactUsButtonVisibility = ContactUsButtonVisibility.OFF;
@@ -138,9 +150,13 @@ public class RNZenDeskSupportModule extends ReactContextBaseJavaModule {
     Boolean articleVotingEnabled = true;
     ContactUsButtonVisibility withContactUsButtonVisibility = ContactUsButtonVisibility.ARTICLE_LIST_AND_ARTICLE;
     if (!(options == null || options.toHashMap().isEmpty())) {
-      showConversationsMenuButton = options.getBoolean("showConversationsMenuButton");
-      articleVotingEnabled = options.getBoolean("articleVotingEnabled");
-      if (!options.getString("withContactUsButtonVisibility").isEmpty()) {
+      if (options.hasKey("showConversationsMenuButton")) {
+        showConversationsMenuButton = options.getBoolean("showConversationsMenuButton");
+      }
+      if (options.hasKey("articleVotingEnabled")) {
+        articleVotingEnabled = options.getBoolean("articleVotingEnabled");
+      }
+      if (options.hasKey("withContactUsButtonVisibility")) {
         switch(options.getString("withContactUsButtonVisibility")) {
           case "OFF":
             withContactUsButtonVisibility = ContactUsButtonVisibility.OFF;
