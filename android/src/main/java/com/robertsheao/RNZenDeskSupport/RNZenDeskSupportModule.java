@@ -44,10 +44,16 @@ public class RNZenDeskSupportModule extends ReactContextBaseJavaModule {
   @ReactMethod
   public void showHelpCenterWithOptions(ReadableMap options) {
     Boolean showConversationsMenuButton = true;
+    Boolean articleVotingEnabled = true;
     ContactUsButtonVisibility withContactUsButtonVisibility = ContactUsButtonVisibility.ARTICLE_LIST_AND_ARTICLE;
     if (!(options == null || options.toHashMap().isEmpty())) {
-      showConversationsMenuButton = options.getBoolean("showConversationsMenuButton");
-      if (!options.getString("withContactUsButtonVisibility").isEmpty()) {
+      if (options.hasKey("showConversationsMenuButton")) {
+        showConversationsMenuButton = options.getBoolean("showConversationsMenuButton");
+      }
+      if (options.hasKey("articleVotingEnabled")) {
+        articleVotingEnabled = options.getBoolean("articleVotingEnabled");
+      }
+      if (options.hasKey("withContactUsButtonVisibility")) {
         switch(options.getString("withContactUsButtonVisibility")) {
           case "OFF":
             withContactUsButtonVisibility = ContactUsButtonVisibility.OFF;
@@ -63,6 +69,7 @@ public class RNZenDeskSupportModule extends ReactContextBaseJavaModule {
     }
     new SupportActivity
       .Builder()
+      .withArticleVoting(articleVotingEnabled)
       .withContactUsButtonVisibility(withContactUsButtonVisibility)
       .showConversationsMenuButton(showConversationsMenuButton)
       .show(getReactApplicationContext());
@@ -71,10 +78,16 @@ public class RNZenDeskSupportModule extends ReactContextBaseJavaModule {
   @ReactMethod
   public void showCategoriesWithOptions(ReadableArray categoryIds, ReadableMap options) {
     Boolean showConversationsMenuButton = true;
+    Boolean articleVotingEnabled = true;
     ContactUsButtonVisibility withContactUsButtonVisibility = ContactUsButtonVisibility.ARTICLE_LIST_AND_ARTICLE;
     if (!(options == null || options.toHashMap().isEmpty())) {
-      showConversationsMenuButton = options.getBoolean("showConversationsMenuButton");
-      if (!options.getString("withContactUsButtonVisibility").isEmpty()) {
+      if (options.hasKey("showConversationsMenuButton")) {
+        showConversationsMenuButton = options.getBoolean("showConversationsMenuButton");
+      }
+      if (options.hasKey("articleVotingEnabled")) {
+        articleVotingEnabled = options.getBoolean("articleVotingEnabled");
+      }
+      if (options.hasKey("withContactUsButtonVisibility")) {
         switch(options.getString("withContactUsButtonVisibility")) {
           case "OFF":
             withContactUsButtonVisibility = ContactUsButtonVisibility.OFF;
@@ -90,6 +103,7 @@ public class RNZenDeskSupportModule extends ReactContextBaseJavaModule {
     }
     new SupportActivity
       .Builder()
+      .withArticleVoting(articleVotingEnabled)
       .withContactUsButtonVisibility(withContactUsButtonVisibility)
       .showConversationsMenuButton(showConversationsMenuButton)
       .withArticlesForCategoryIds(toLongArray(categoryIds.toArrayList()))
@@ -99,10 +113,16 @@ public class RNZenDeskSupportModule extends ReactContextBaseJavaModule {
   @ReactMethod
   public void showSectionsWithOptions(ReadableArray sectionIds, ReadableMap options) {
     Boolean showConversationsMenuButton = true;
+    Boolean articleVotingEnabled = true;
     ContactUsButtonVisibility withContactUsButtonVisibility = ContactUsButtonVisibility.ARTICLE_LIST_AND_ARTICLE;
     if (!(options == null || options.toHashMap().isEmpty())) {
-      showConversationsMenuButton = options.getBoolean("showConversationsMenuButton");
-      if (!options.getString("withContactUsButtonVisibility").isEmpty()) {
+      if (options.hasKey("showConversationsMenuButton")) {
+        showConversationsMenuButton = options.getBoolean("showConversationsMenuButton");
+      }
+      if (options.hasKey("articleVotingEnabled")) {
+        articleVotingEnabled = options.getBoolean("articleVotingEnabled");
+      }
+      if (options.hasKey("withContactUsButtonVisibility")) {
         switch(options.getString("withContactUsButtonVisibility")) {
           case "OFF":
             withContactUsButtonVisibility = ContactUsButtonVisibility.OFF;
@@ -118,16 +138,25 @@ public class RNZenDeskSupportModule extends ReactContextBaseJavaModule {
     }
     new SupportActivity
       .Builder()
+      .withArticleVoting(articleVotingEnabled)
+      .withContactUsButtonVisibility(withContactUsButtonVisibility)
+      .showConversationsMenuButton(showConversationsMenuButton)
       .show(getReactApplicationContext());
   }
 
   @ReactMethod
   public void showLabelsWithOptions(ReadableArray labels, ReadableMap options) {
     Boolean showConversationsMenuButton = true;
+    Boolean articleVotingEnabled = true;
     ContactUsButtonVisibility withContactUsButtonVisibility = ContactUsButtonVisibility.ARTICLE_LIST_AND_ARTICLE;
     if (!(options == null || options.toHashMap().isEmpty())) {
-      showConversationsMenuButton = options.getBoolean("showConversationsMenuButton");
-      if (!options.getString("withContactUsButtonVisibility").isEmpty()) {
+      if (options.hasKey("showConversationsMenuButton")) {
+        showConversationsMenuButton = options.getBoolean("showConversationsMenuButton");
+      }
+      if (options.hasKey("articleVotingEnabled")) {
+        articleVotingEnabled = options.getBoolean("articleVotingEnabled");
+      }
+      if (options.hasKey("withContactUsButtonVisibility")) {
         switch(options.getString("withContactUsButtonVisibility")) {
           case "OFF":
             withContactUsButtonVisibility = ContactUsButtonVisibility.OFF;
@@ -144,6 +173,7 @@ public class RNZenDeskSupportModule extends ReactContextBaseJavaModule {
     //noinspection SuspiciousToArrayCall
     new SupportActivity
       .Builder()
+      .withArticleVoting(articleVotingEnabled)
       .withContactUsButtonVisibility(withContactUsButtonVisibility)
       .showConversationsMenuButton(showConversationsMenuButton)
       .withLabelNames(labels.toArrayList().toArray(new String[]{}))
